@@ -1,22 +1,14 @@
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- * Интерфейс для обработки текста.
- */
+//Интерфейс для обработки текста.
 interface ITextProcessor {
-    /**
-     * Обрабатывает переданный текст.
-     *
-     * @param inputText исходный текст
-     * @return обработанный текст
-     */
+
     String processText(String inputText);
 }
 
-/**
- * Класс для подсчета гласных и согласных (Унаследованный_класс 1).
- */
+//Класс для подсчета гласных и согласных (Унаследованный_класс 1).
+ 
 class LetterCounter implements ITextProcessor {
     protected static final String VOWELS = 
         "AEIOUYaeiouyАЕЁИОУЫЭЮЯаеёиоуыэюя";
@@ -28,15 +20,11 @@ class LetterCounter implements ITextProcessor {
         int[] counts = countLetters(inputText);
         System.out.println("Количество гласных: " + counts[0]);
         System.out.println("Количество согласных: " + counts[1]);
-        return inputText; // Возвращаем исходный текст без изменений
+        return inputText; 
     }
     
-    /**
-     * Подсчитывает количество гласных и согласных.
-     *
-     * @param text текст для анализа
-     * @return массив из двух элементов: [гласные, согласные]
-     */
+//Подсчитывает количество гласных и согласных.
+
     protected int[] countLetters(String text) {
         int[] counts = new int[2];
         for (char ch : text.toCharArray()) {
@@ -50,9 +38,8 @@ class LetterCounter implements ITextProcessor {
     }
 }
 
-/**
- * Класс для добавления символов (Унаследованный_класс 2).
- */
+//Класс для добавления символов (Унаследованный_класс 2).
+
 class LetterAdder extends LetterCounter {
     private final Random random = new Random();
     
@@ -82,17 +69,10 @@ class LetterAdder extends LetterCounter {
     }
 }
 
-/**
- * Фабрика для создания текстовых процессоров.
- */
+//Фабрика для создания текстовых процессоров.
+
 class TextProcessorFactory {
-    /**
-     * Создает процессор в зависимости от типа.
-     *
-     * @param type тип процессора (1 - подсчет, 2 - добавление)
-     * @return экземпляр процессора
-     * @throws IllegalArgumentException если тип не поддерживается
-     */
+
     public static ITextProcessor createProcessor(int type) {
         switch (type) {
             case 1:
@@ -106,9 +86,8 @@ class TextProcessorFactory {
     }
 }
 
-/**
- * Главный класс приложения.
- */
+//Главный класс приложения.
+
 public class Lab3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -117,7 +96,7 @@ public class Lab3 {
         System.out.println("1. Подсчет букв");
         System.out.println("2. Добавление букв для балансировки");
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Очистка буфера
+        scanner.nextLine();
 
         ITextProcessor processor;
         try {
